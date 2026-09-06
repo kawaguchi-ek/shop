@@ -4,56 +4,173 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
+<meta name="description" content="厳選!最新プレスリリース・ニュース速報のニュース動画で取り上げた商品のまとめ">
 <title>動画で紹介した商品｜厳選!最新プレスリリース・ニュース速報</title>
-<style>
+<style>@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400&family=Inter:wght@400;500&family=Noto+Serif+JP:wght@400&family=Noto+Sans+JP:wght@400;500&display=swap');
 :root{
-  --bg:#FBF8F1; --card:#FFFFFF; --text:#33302B; --sub:#8C8577;
-  --accent:#E8821E; --line:#E7DFD2;
+  --ink:#17191C;          /* 墨のインク: 本文・見出し・塗りボタン */
+  --paper:#FFFFFF;        /* 紙の白: ページ地色 */
+  --haze:#FAFAFB;         /* 靄の白: ホバー面 */
+  --mist:#F2F2F3;         /* 霧のグレー: 入力欄の塗り */
+  --slate:#6E727C;        /* 石板のグレー（AA調整版）: 補助テキスト */
+  --ash:#979799;          /* 灰のグレー: 三次ラベル */
+  --smoke:#A3A6AF;        /* 煙のグレー: プレースホルダー */
+  --peach:#FBE1D1;        /* 頬紅のピーチ: アクセント面。1ページ1枚 */
+  --sienna:#5D2A1A;       /* シエナの茶: ピーチ面の上のテキストと罫 */
+  --hair:#ECECEC;         /* ヘアライン */
+  --serif:'Source Serif 4','Noto Serif JP',ui-serif,Georgia,serif;
+  --sans:'Inter','Noto Sans JP',ui-sans-serif,system-ui,sans-serif;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);
-  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
-  line-height:1.7;-webkit-text-size-adjust:100%}
-.wrap{max-width:680px;margin:0 auto;padding:28px 18px 64px}
-header{text-align:center;padding:8px 0 24px;border-bottom:3px solid var(--accent)}
-h1{font-size:22px;margin:0 0 6px;font-weight:800}
-header p{margin:0;color:var(--sub);font-size:14px}
-header a{color:var(--accent);text-decoration:none;font-weight:700}
-.video{margin:32px 0 0}
-.video h2{font-size:17px;margin:0 0 2px;font-weight:700;overflow-wrap:anywhere}
-.item .name,.wrap{overflow-wrap:anywhere}
-.date{color:var(--sub);font-size:13px;margin:0 0 12px}
-.item{display:block;background:var(--card);border:1px solid var(--line);
-  border-radius:14px;padding:15px 17px;margin:0 0 10px;text-decoration:none;color:inherit}
-.item:hover{border-color:var(--accent)}
-.item .name{font-size:15px;font-weight:600}
-.item .go{color:var(--accent);font-size:13px;font-weight:700;margin-top:5px}
-.empty{color:var(--sub);text-align:center;padding:40px 0}
-footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);
-  color:var(--sub);font-size:12px}
-@media (prefers-color-scheme:dark){
-  :root{--bg:#23211E;--card:#2E2B27;--text:#F2EEE6;--sub:#A9A196;--line:#3D3933}
+html{color-scheme:light}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:17px;line-height:1.8;-webkit-text-size-adjust:100%;
+  -webkit-font-smoothing:antialiased}
+.page{max-width:720px;margin:0 auto;padding:56px 24px 96px}
+
+/* ---- ヒーロー ---- */
+.brand{font-size:14px;line-height:1.4;color:var(--slate);margin:0 0 20px;
+  letter-spacing:.02em}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,8.5vw,56px);
+  line-height:1.3;letter-spacing:-0.015em;margin:0 0 20px}
+.lede{margin:0 0 28px;color:var(--slate);font-size:17px;line-height:1.8}
+.pill{display:inline-block;border-radius:9999px;padding:11px 22px;font-size:16px;
+  line-height:1.4;text-decoration:none;transition:background-color .2s ease,color .2s ease}
+.pill.ghost{border:1px solid var(--ink);color:var(--ink)}
+.pill.ghost:hover,.pill.ghost:focus-visible{background:var(--ink);color:var(--paper)}
+
+/* ---- 絞り込み ---- */
+.filter{position:relative;margin:64px 0 0}
+.filter svg{position:absolute;left:18px;top:50%;transform:translateY(-50%);
+  width:18px;height:18px;stroke:var(--slate);fill:none;stroke-width:1.8;pointer-events:none}
+.filter input{width:100%;background:var(--mist);border:1px solid transparent;
+  border-radius:16px;padding:15px 18px 15px 48px;font-family:var(--sans);font-size:16px;
+  color:var(--ink);appearance:none;transition:border-color .2s ease,background-color .2s ease}
+.filter input::placeholder{color:var(--smoke)}
+.filter input:focus{outline:none;background:var(--paper);border-color:var(--ink)}
+
+/* ---- 最新の動画（唯一の色面） ---- */
+.latest{margin:28px 0 0;background:var(--peach);color:var(--sienna);
+  border-radius:24px;padding:28px 24px 12px}
+.latest .tag{margin:0 0 10px;font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+.latest h2{font-family:var(--serif);font-weight:400;font-size:clamp(22px,5.2vw,30px);
+  line-height:1.4;letter-spacing:-0.01em;margin:0 0 6px;overflow-wrap:anywhere}
+.latest .meta{margin:0 0 6px;font-size:14px;opacity:.75}
+.latest .row{color:var(--sienna);border-top-color:rgba(93,42,26,.22)}
+.latest .row:hover,.latest .row:focus-visible{background:rgba(255,255,255,.42)}
+.latest .go{color:var(--sienna)}
+
+/* ---- これまでの動画 ---- */
+.section-h{font-family:var(--serif);font-weight:400;font-size:26px;line-height:1.4;
+  margin:80px 0 4px}
+.section-h+.section-note{margin:0 0 8px;font-size:14px;color:var(--slate)}
+.entry{margin:36px 0 0}
+.entry h3{font-family:var(--serif);font-weight:400;font-size:22px;line-height:1.5;
+  margin:0 0 4px;letter-spacing:-0.01em;overflow-wrap:anywhere}
+.entry .meta{margin:0 0 4px;font-size:14px;color:var(--slate)}
+
+/* ---- 商品の行 ---- */
+.rows{list-style:none;margin:0;padding:0}
+.row{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+  padding:16px 12px;margin:0 -12px;border-top:1px solid var(--hair);
+  border-radius:16px;text-decoration:none;color:var(--ink);
+  transition:background-color .2s ease}
+.row:hover,.row:focus-visible{background:var(--haze);outline:none}
+.row:focus-visible{box-shadow:inset 0 0 0 2px var(--ink)}
+.row .name{font-size:17px;line-height:1.7;overflow-wrap:anywhere}
+.row .go{flex:none;font-size:15px;color:var(--slate);white-space:nowrap;
+  transition:color .2s ease}
+.row:hover .go,.row:focus-visible .go{color:var(--ink)}
+.row:active{background:var(--ink);color:var(--paper)}
+.row:active .go,.row:active .name{color:var(--paper)}
+
+/* 狭い画面では名前を1行に使い切り、リンク文言はその下へ落とす */
+@media (max-width:520px){
+  .row{flex-direction:column;align-items:flex-start;gap:2px;padding:14px 12px}
+  .row .go{font-size:14px}
+}
+
+/* ---- 空状態 ---- */
+.empty{margin:56px 0;color:var(--slate);text-align:center}
+
+/* ---- フッター ---- */
+footer{margin:96px 0 0;padding:28px 0 0;border-top:1px solid var(--hair)}
+footer a{display:inline-block;color:var(--ink);font-size:16px;text-decoration:none;
+  margin:0 0 20px}
+footer a:hover,footer a:focus-visible{text-decoration:underline}
+.disclosure{margin:0;font-size:14px;line-height:1.7;color:var(--slate)}
+
+/* ---- 初回のstaggered reveal ---- */
+.reveal{opacity:0;transform:translateY(12px);
+  animation:rise .6s cubic-bezier(.16,.84,.44,1) forwards}
+.reveal:nth-of-type(1){animation-delay:0ms}
+.d1{animation-delay:120ms}.d2{animation-delay:240ms}
+.d3{animation-delay:360ms}.d4{animation-delay:480ms}
+@keyframes rise{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  .reveal{animation:none;opacity:1;transform:none}
+  *{transition-duration:.001ms !important}
 }
 </style>
 </head>
 <body>
-  <div class="wrap">
+  <div class="page">
     <header>
-      <h1>動画で紹介した商品</h1>
-      <p><a href="https://www.youtube.com/@gensen-pressrelease">厳選!最新プレスリリース・ニュース速報</a></p>
+      <p class="brand reveal">厳選!最新プレスリリース・ニュース速報</p>
+      <h1 class="reveal d1">動画で紹介した商品</h1>
+      <p class="lede reveal d2">ニュース動画で取り上げた商品を、放送の新しい順にまとめています。</p>
+      <a class="pill ghost reveal d3" href="https://www.youtube.com/channel/UCFHDwr98kFYtMogcS--0iIg">チャンネルを見る</a>
     </header>
-    <section class="video">
+
+    <div class="filter reveal d1">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5 L18 18"/></svg>
+      <input id="q" type="search" placeholder="商品名や動画名で絞り込む" aria-label="商品名や動画名で絞り込む">
+    </div>
+
+    <section class="latest reveal d2" data-search="マツケンサンバがお線香に 漆黒のボディに金ラメ (日本香堂) 2026-09-04 日本香堂 青雲 黒 バラ詰 (約110g) 日本香堂 毎日香 小型バラ詰 約70g 白檀">
+      <p class="tag">最新の動画</p>
       <h2>マツケンサンバがお線香に 漆黒のボディに金ラメ (日本香堂)</h2>
-      <p class="date">2026-09-04</p>
-      <a class="item" href="https://www.amazon.co.jp/dp/B001B6ALHY?tag=gensen-pressrelease-22" target="_blank" rel="nofollow noopener"><div class="name">日本香堂 青雲 黒 バラ詰 (約110g)</div><div class="go">Amazonで見る →</div></a>
-      <a class="item" href="https://www.amazon.co.jp/dp/B01NCXA9V8?tag=gensen-pressrelease-22" target="_blank" rel="nofollow noopener"><div class="name">日本香堂 毎日香 小型バラ詰 約70g 白檀</div><div class="go">Amazonで見る →</div></a>
+      <p class="meta">2026-09-04</p>
+      <ul class="rows">
+        <li><a class="row" href="https://www.amazon.co.jp/dp/B001B6ALHY?tag=gensen-pressrelease-22" target="_blank" rel="nofollow noopener sponsored"><span class="name">日本香堂 青雲 黒 バラ詰 (約110g)</span><span class="go">Amazonで見る →</span></a></li>
+        <li><a class="row" href="https://www.amazon.co.jp/dp/B01NCXA9V8?tag=gensen-pressrelease-22" target="_blank" rel="nofollow noopener sponsored"><span class="name">日本香堂 毎日香 小型バラ詰 約70g 白檀</span><span class="go">Amazonで見る →</span></a></li>
+      </ul>
     </section>
-    <section class="video">
-      <h2>カニカマ3000パックで作った100がギネス世界記録 (カネテツ)</h2>
-      <p class="date">2026-09-02</p>
-      <a class="item" href="https://www.amazon.co.jp/dp/B09Y59LKJ7?tag=gensen-pressrelease-22" target="_blank" rel="nofollow noopener"><div class="name">カネテツ ほぼカニ 81g×1パック 冷蔵</div><div class="go">Amazonで見る →</div></a>
-    </section>
-    <footer>Amazonのアソシエイトとして、厳選!最新プレスリリース・ニュース速報は適格販売により収入を得ています。</footer>
+
+    <h2 class="section-h reveal d3">これまでの動画</h2>
+    <p class="section-note reveal d3">新しい順に並んでいます。</p>
+    <article class="entry" data-search="カニカマ3000パックで作った100がギネス世界記録 (カネテツ) 2026-09-02 カネテツ ほぼカニ 81g×1パック 冷蔵">
+      <h3>カニカマ3000パックで作った100がギネス世界記録 (カネテツ)</h3>
+      <p class="meta">2026-09-02</p>
+      <ul class="rows">
+        <li><a class="row" href="https://www.amazon.co.jp/dp/B09Y59LKJ7?tag=gensen-pressrelease-22" target="_blank" rel="nofollow noopener sponsored"><span class="name">カネテツ ほぼカニ 81g×1パック 冷蔵</span><span class="go">Amazonで見る →</span></a></li>
+      </ul>
+    </article>
+
+    <p class="empty" id="noresult" hidden>該当する商品はありません。</p>
+
+    <footer>
+      <a href="https://www.youtube.com/channel/UCFHDwr98kFYtMogcS--0iIg">チャンネルを見る →</a>
+      <p class="disclosure">Amazonのアソシエイトとして、厳選!最新プレスリリース・ニュース速報は適格販売により収入を得ています。</p>
+    </footer>
   </div>
+<script>
+(function(){
+  var q=document.getElementById('q');
+  if(!q)return;
+  var groups=[].slice.call(document.querySelectorAll('[data-search]'));
+  var empty=document.getElementById('noresult');
+  q.addEventListener('input',function(){
+    var t=q.value.trim().toLowerCase();
+    var hit=0;
+    groups.forEach(function(g){
+      var on=!t||g.getAttribute('data-search').indexOf(t)>=0;
+      g.hidden=!on;
+      if(on)hit++;
+    });
+    empty.hidden=hit>0;
+  });
+})();
+</script>
 </body>
 </html>
